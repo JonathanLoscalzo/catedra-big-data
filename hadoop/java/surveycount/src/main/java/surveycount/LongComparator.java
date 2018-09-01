@@ -5,7 +5,6 @@ import java.nio.ByteBuffer;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparator;
 
-
 public class LongComparator extends WritableComparator {
 
 	protected LongComparator() {

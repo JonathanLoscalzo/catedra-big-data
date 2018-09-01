@@ -35,6 +35,8 @@ public class Worker extends Configured implements Tool {
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(LongWritable.class);
 	    
+	    job.setSortComparatorClass(LongComparator.class);
+	    
 	    job.setNumReduceTasks(3);
 	    job.setInputFormatClass(TextInputFormat.class);
             job.setOutputFormatClass(TextOutputFormat.class);

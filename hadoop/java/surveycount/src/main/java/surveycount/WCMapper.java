@@ -15,8 +15,6 @@ public class WCMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
 			Arrays.asList("Muy satisfecho", "Algo satisfecho", "Poco satisfecho", "Muy disconforme"));
 
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		FuzzySearch.ratio("mysmilarstring", "mysimilarstring");
-
 		for (String e : optionKeys) {
 			if (FuzzySearch.ratio(e, value.toString()) > 90) {
 				 context.write(new Text(e), one);
