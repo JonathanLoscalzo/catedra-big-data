@@ -1,0 +1,2 @@
+hdfs dfsadmin -safemode leave
+
