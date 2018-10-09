@@ -16,13 +16,16 @@ public class PertenenciaReducer extends Reducer<LongWritable, Text, LongWritable
 			throws IOException, InterruptedException {
 
 		List<Text> myList = Lists.newArrayList(values);
-		
-		if (myList.size() == 2) {
+		if (key.get() == -1) {
+			for (Text text : myList) {
+				context.write(new LongWritable(Long.parseLong(text.toString())), new Text("SI"));
+			}
+		} else if (myList.size() == 2) {
 			context.write(key, new Text("SI"));
 		} else if (myList.get(0).toString().equals("Lista")) {
 			context.write(key, new Text("NO"));
 		}
-		
+
 	}
 
 }

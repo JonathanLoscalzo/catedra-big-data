@@ -31,6 +31,7 @@ public class Worker extends Configured implements Tool {
 	    
 	    job.setMapOutputKeyClass(LongWritable.class);
 	    job.setMapOutputValueClass(Text.class);
+	    job.setCombinerClass(PertenenciaCombiner.class);
 	   
 	    // job.setInputFormatClass(TextInputFormat.class);
 	    // job.setOutputFormatClass(TextOutputFormat.class);

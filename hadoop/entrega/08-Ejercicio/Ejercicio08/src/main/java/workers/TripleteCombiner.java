@@ -1,17 +1,11 @@
 package workers;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
 
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import com.google.common.collect.Lists;
-
-public class UnicoReducer extends Reducer<LongWritable, LongWritable, LongWritable, Text> {
-
+public class TripleteCombiner extends Reducer<LongWritable, LongWritable, LongWritable, LongWritable> {
 	public void reduce(LongWritable key, Iterable<LongWritable> values, Context context)
 			throws IOException, InterruptedException {
 
@@ -20,10 +14,9 @@ public class UnicoReducer extends Reducer<LongWritable, LongWritable, LongWritab
 			acum += value.get();
 		}
 		
-		if (acum == 1) {			
-			context.write(key, new Text(""));
+		if (acum != 3) {			
+			context.write(key, new LongWritable(acum));
 		}
 		
 	}
-
 }

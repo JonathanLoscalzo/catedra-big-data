@@ -10,18 +10,21 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import com.google.common.collect.Lists;
 
-public class IgualdadReducer extends Reducer<LongWritable, Text, Text, Text> {
+public class IgualdadCombiner extends Reducer<LongWritable, Text, LongWritable, Text> {
 
 	public void reduce(LongWritable key, Iterable<Text> values, Context context)
 			throws IOException, InterruptedException {
 		Configuration conf = context.getConfiguration();
 		List<Text> myList = Lists.newArrayList(values);
-		
-		if (conf.getBoolean("ESCRIBIR", true) && myList.size() != 2) {			
-			context.write(new Text("NO"), new Text(""));
-			conf.setBoolean("ESCRIBIR", false); // de esta manera escribimos uno solo
-		}
-		
-	}
 
+		// SI es igual a 2, no lo escribo porque es un no.
+		// el condicional podrìa tener conf.getBoolean("ESCRIBIR", true)
+		if (myList.size() != 2) {
+			
+			for (Text text : myList) {
+				context.write(key, text);
+			}
+			
+		}
+	}
 }

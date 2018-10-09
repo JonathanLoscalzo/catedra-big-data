@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class ConjuntoMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
+public class ConjuntoMapper extends Mapper<LongWritable, Text, LongWritable, LongWritable> {
 
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		ArrayList<String> words = new ArrayList<String>();
@@ -18,7 +18,7 @@ public class ConjuntoMapper extends Mapper<LongWritable, Text, LongWritable, Tex
 	    	words.add(tokenizer.nextToken().toString());    	
 	    }
 	    
-	    context.write(new LongWritable(Long.parseLong(words.get(0))), new Text(words.get(0))); 
+	    context.write(new LongWritable(Long.parseLong(words.get(0))), new LongWritable(1L)); 
 	}
 
 }
