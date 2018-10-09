@@ -29,3 +29,11 @@ Luego, se copian los archivos de salida, en una carpeta del filesystem local.
 Se pueden observar 3 carpetas: cardinal_x, pertenencia_e_en_X, conjunto_x
 Son las 3 salidas que necesitamos observar.
 
+
+## OPCION 2
+```
+hadoop ejercicio9.jar A.txt B.txt C.txt E.txt
+rm -rf Salida
+hdfs dfs -copyToLocal Salida $PWD/Salida
+hdfs dfs -copyToLocal Conjuntos/conjunto_x $PWD/Salida
+```
