@@ -28,9 +28,9 @@ public class Worker extends Configured implements Tool {
 	    job.setReducerClass(UnionReducer.class);
 	    job.setOutputKeyClass(LongWritable.class);
 	    job.setOutputValueClass(Text.class);
-	    
+	    job.setCombinerClass(UnionReducer.class);
 	    job.setMapOutputKeyClass(LongWritable.class);
-	    job.setMapOutputValueClass(LongWritable.class);
+	    job.setMapOutputValueClass(Text.class);
 	   
 	    // job.setInputFormatClass(TextInputFormat.class);
 	    // job.setOutputFormatClass(TextOutputFormat.class);

@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class UnionMapper extends Mapper<LongWritable, Text, LongWritable, LongWritable> {
+public class UnionMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
 
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		ArrayList<String> words = new ArrayList<String>();
@@ -18,7 +18,7 @@ public class UnionMapper extends Mapper<LongWritable, Text, LongWritable, LongWr
 	    	words.add(tokenizer.nextToken().toString());    	
 	    }
 	    
-	    context.write(new LongWritable(Long.parseLong(words.get(0))), new LongWritable(1L)); 
+	    context.write(new LongWritable(Long.parseLong(words.get(0))), new Text("1")); 
 	}
 
 }
