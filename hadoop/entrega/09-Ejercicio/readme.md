@@ -37,3 +37,5 @@ rm -rf Salida
 hdfs dfs -copyToLocal Salida $PWD/Salida
 hdfs dfs -copyToLocal Conjuntos/conjunto_x $PWD/Salida
 ```
+
+o bash script2.sh
