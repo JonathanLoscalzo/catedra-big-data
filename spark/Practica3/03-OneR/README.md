@@ -1,0 +1,1 @@
+Implemente OneR en Spark. Utilice el archivo CarNominal.csv
